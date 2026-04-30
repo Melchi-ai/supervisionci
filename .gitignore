@@ -1,0 +1,28 @@
+# Dépendances
+node_modules/
+.npm
+
+# Build
+dist/
+dist-ssr/
+
+# Variables d'environnement — NE JAMAIS committer !
+.env
+.env.local
+.env.production
+
+# Android
+android/
+ios/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
