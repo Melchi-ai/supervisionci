@@ -258,6 +258,31 @@ Ton administratif professionnel, contexte béninois.`;
     } catch {}
   }
 
+  try {
+  const response = await fetch("/api/generate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: {
+        stats,
+        nonConformites: ncs,
+      },
+    }),
+  });
+
+  const result = await response.json();
+
+  if (result?.choices?.[0]?.message?.content) {
+    return {
+      source: "groq",
+      contenu: result.choices[0].message.content,
+    };
+  }
+} catch (error) {
+  console.error("Erreur IA Groq :", error);
+}
   // Fallback local
   const niveau = stats.taux>=80?'SATISFAISANT':stats.taux>=60?'EN DÉVELOPPEMENT':'INSUFFISANT';
   return {
